@@ -1,5 +1,7 @@
 # grunt-requirejs-config-gen
 
+[![Build Status](https://secure.travis-ci.org/hiddentao/grunt-requirejs-config-gen.png)](http://travis-ci.org/hiddentao/grunt-requirejs-config-gen)
+
 > Generates a RequireJS optimizer config file from a base config file.
 
 For now this plugin generates:
