@@ -2,3 +2,4 @@ test
 .jshintrc
 Gruntfile.js
 .travis.yml
+tmp
