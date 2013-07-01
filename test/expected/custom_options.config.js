@@ -8,7 +8,7 @@ var config = {
 
 
 config.include = config.include || [];
-config.include.push('test/1');
+config.include.push('files/1');
 
 
 require.config(config);

@@ -33,14 +33,13 @@ module.exports = function(grunt) {
       default_options: {
         options: {
           input: 'test/fixtures/default_options.skel.js',
-          basePath: 'files',
           output: 'tmp/default_options.config.js'
         },
         includes: [ 'test/fixtures/files/*.js' ]
       },
       custom_options: {
         options: {
-          basePath: 'test',
+          baseUrl: 'test/fixtures',
           input: 'test/fixtures/custom_options.skel.js',
           output: 'tmp/custom_options.config.js'
         },

@@ -21,7 +21,7 @@ module.exports = function(grunt) {
     var options = this.options({
       input: null,
       output: null,
-      basePath: '.'
+      baseUrl: './'
     });
 
     if (!options.input) {
@@ -32,10 +32,12 @@ module.exports = function(grunt) {
       throw new Error('Path to RequireJS output config file must be provided as "output" option');
     }
 
-    if (!options.basePath) {
-      throw new Error('Base path for require() calls needs to be provided as "basePath" option');
+    if (!options.baseUrl) {
+      throw new Error('Base path for require() calls needs to be provided as "baseUrl" option');
     }
 
+    var baseFolder = path.resolve(options.baseUrl);
+    
     // read skeleton file
     var skeletonConfig = fs.readFileSync(options.input, 'utf-8');
 
@@ -47,8 +49,19 @@ module.exports = function(grunt) {
     var includes = grunt.file.expand({filter: 'isFile'}, this.data.includes);
 
     var includeList = includes.map(function(filePath) {
-      var fileNameNoExt = path.basename(filePath, '.js');
-      return 'config.include.push(\'' + options.basePath + '/' + fileNameNoExt + '\');';
+      var fullPath = path.resolve(filePath);
+
+      var pos = fullPath.indexOf(baseFolder);
+      if (-1 !== pos) {
+        fullPath = fullPath.substr(pos + baseFolder.length);
+        if ('/' === fullPath.charAt(0)) {
+          fullPath = fullPath.substr(1);
+        }
+      }
+
+      var fileNameNoExt = path.basename(fullPath, '.js');
+      var dirName = path.dirname(fullPath);
+      return 'config.include.push(\'' + dirName + '/' + fileNameNoExt + '\');';
     });
 
     // now replace the skeleton placeholder

@@ -11,8 +11,8 @@ var config = {
 
 
 config.include = config.include || [];
-config.include.push('files/1');
-config.include.push('files/2');
+config.include.push('test/fixtures/files/1');
+config.include.push('test/fixtures/files/2');
 
 
 require.config(config);
