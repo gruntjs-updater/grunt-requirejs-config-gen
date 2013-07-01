@@ -50,13 +50,13 @@ grunt.initConfig({
 Type: `String`
 Default value: `null`
 
-**REQUIRED** The path to the skeleton configuration file, relative to the current directory.
+*Required.* The path to the skeleton configuration file, relative to the current directory.
 
 #### options.output
 Type: `String`
 Default value: `null`
 
-**REQUIRED** The path to the output configuration file which will get generated.
+*Required.* The path to the output configuration file which will get generated.
 
 #### options.baseUrl
 Type: `String`
